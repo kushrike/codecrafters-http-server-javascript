@@ -22,6 +22,15 @@ const server = net.createServer((socket) => {
           socket.write(str);
         }
         
+        else if(path === "/user-agent") {
+          const userAgentLine = request.filter(x => x.startsWith("User-Agent:"));
+          const str = userAgentLine[0].split(": ")[1];
+          socket.write("HTTP/1.1 200 OK\r\n");
+          socket.write("Content-Type: text/plain\r\n");
+          socket.write(`Content-Length:${str.length}\r\n\r\n`);
+          socket.write(str);
+        }
+
         else {
             socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
         }
