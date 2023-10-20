@@ -38,7 +38,7 @@ const server = net.createServer((socket) => {
         else if(path.startsWith("/files/")) {
           const filename = path.substring(7);
           try {
-            console.log(path.join(args[1], filename));
+            console.log(paths.join(args[1], filename));
             const file = fs.readFileSync(path.join(args[1], filename));
             console.log(paths.join(args[1], filename));
             socket.write("HTTP/1.1 200 OK\r\n");
