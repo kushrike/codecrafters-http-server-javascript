@@ -5,6 +5,7 @@ var path =  require("path");
 // You can use print statements as follows for debugging, they'll be visible when running tests.
 console.log("Logs from your program will appear here!");
 const args = process.argv;
+console.log("ARGS", args);
 
 // Uncomment this to pass the first stage
 const server = net.createServer((socket) => {
