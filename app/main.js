@@ -4,7 +4,7 @@ var path =  require("path");
 
 // You can use print statements as follows for debugging, they'll be visible when running tests.
 console.log("Logs from your program will appear here!");
-const args = process.argv;
+const args = process.argv.slice(2);
 console.log("ARGS", args);
 
 // Uncomment this to pass the first stage
