@@ -45,10 +45,10 @@ const server = net.createServer((socket) => {
               socket.write("Content-Type: application/octet-stream\r\n");
               socket.write(`Content-Length:${fileContent.length}\r\n\r\n`);
               socket.write(fileContent);
-            } else {
-              socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
-            }
-sxx          } else if(method ===  "POST") {
+              } else {
+                socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
+              }
+          }
             const filename = path.substring(7);
             const location = paths.join(args[1], filename)
             fs.writeFileSync(location, headers[headers.length - 1]);
