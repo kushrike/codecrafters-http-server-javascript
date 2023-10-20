@@ -45,7 +45,7 @@ const server = net.createServer((socket) => {
             socket.write("Content-Type: application/octet-stream\r\n");
             socket.write(file);
           } catch(err) {
-            console.err(err);
+            console.log(err);
             socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
           }
         }
