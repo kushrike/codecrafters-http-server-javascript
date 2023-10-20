@@ -5,7 +5,6 @@ const paths = require('path');
 // You can use print statements as follows for debugging, they'll be visible when running tests.
 console.log("Logs from your program will appear here!");
 const args = process.argv.slice(2);
-console.log("ARGS", args);
 
 // Uncomment this to pass the first stage
 const server = net.createServer((socket) => {
@@ -37,15 +36,12 @@ const server = net.createServer((socket) => {
 
         else if(path.startsWith("/files/")) {
           const filename = path.substring(7);
-          try {
-            console.log(paths.join(args[1], filename));
-            const file = fs.readFileSync(paths.join(args[1], filename));
-            console.log(paths.join(args[1], filename));
+          if(fs.existsSync(paths.join(args[1], filename))) {
+            const fileContent = fs.readFileSync(paths.join(args[1], filename));
             socket.write("HTTP/1.1 200 OK\r\n");
             socket.write("Content-Type: application/octet-stream\r\n");
-            socket.write(file);
-          } catch(err) {
-            console.log(err);
+            socket.write(fileContent);
+          } else {
             socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
           }
         }
