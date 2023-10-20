@@ -48,13 +48,13 @@ const server = net.createServer((socket) => {
               } else {
                 socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
               }
-          }
+          } else if(method === "POST") {
             const filename = path.substring(7);
             const location = paths.join(args[1], filename)
             fs.writeFileSync(location, headers[headers.length - 1]);
             socket.write("HTTP/1.1 201 Created\r\n\r\n");s
           }
-      }
+        }
 
         else {
             socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
