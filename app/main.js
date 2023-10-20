@@ -1,6 +1,6 @@
 const net = require("net");
 const fs = require("fs");
-var path =  require("path");
+const paths = require('path');
 
 // You can use print statements as follows for debugging, they'll be visible when running tests.
 console.log("Logs from your program will appear here!");
@@ -40,7 +40,7 @@ const server = net.createServer((socket) => {
           try {
             console.log(path.join(args[1], filename));
             const file = fs.readFileSync(path.join(args[1], filename));
-            console.log(path.join(args[1], filename));
+            console.log(paths.join(args[1], filename));
             socket.write("HTTP/1.1 200 OK\r\n");
             socket.write("Content-Type: application/octet-stream\r\n");
             socket.write(file);
