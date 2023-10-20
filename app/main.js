@@ -52,7 +52,7 @@ const server = net.createServer((socket) => {
             const filename = path.substring(7);
             const location = paths.join(args[1], filename)
             fs.writeFileSync(location, headers[headers.length - 1]);
-            socket.write("HTTP/1.1 201 Created\r\n\r\n");
+            socket.write("HTTP/1.1 201 Created\r\n\r\n");s
           }
       }
 
